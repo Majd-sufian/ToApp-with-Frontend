@@ -1,24 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { ListItem, List, ListItemText, Button, Modal } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 import db from "./firebase";
+import useStyles from "./useSyles";
 import firebase from "firebase";
-
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    position: "absolute",
-    width: 400,
-    backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-  },
-}));
 
 function Todo(props) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
-  const [inputTodo, setInputTodo] = useState("");
+  const [input, setInput] = useState("");
 
   const handleOpen = () => {
     setOpen(true);
@@ -27,7 +16,7 @@ function Todo(props) {
   const updateTodo = () => {
     db.collection("todos").doc(props.todo.id).set(
       {
-        todo: inputTodo,
+        todo: input,
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       },
       { merge: true }
@@ -51,8 +40,8 @@ function Todo(props) {
           <h1>I am a Modal</h1>
           <input
             placeholder={props.todo.todo}
-            value={inputTodo}
-            onChange={(event) => setInputTodo(event.target.value)}
+            value={input}
+            onChange={(event) => setInput(event.target.value)}
           />
           <Button onClick={updateTodo}>Update TODO</Button>
         </div>
