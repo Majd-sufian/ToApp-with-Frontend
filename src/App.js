@@ -3,8 +3,8 @@ import ToDo from "./Todo";
 import { db } from "./firebase";
 import { auth } from "firebase";
 import { makeStyles, Button, Modal, Input } from "@material-ui/core";
-import firebase from "firebase";
 import useStyles from "./useSyles";
+import firebase from "firebase";
 import "./App.css";
 
 function getModalStyle() {
