@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ListItem, List, ListItemText, Button, Modal } from "@material-ui/core";
-import db from "./firebase";
+import { db } from "./firebase";
 import useStyles from "./useSyles";
 import firebase from "firebase";
 
@@ -18,6 +18,7 @@ function Todo(props) {
       {
         todo: input,
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        username: props.username,
       },
       { merge: true }
     );
