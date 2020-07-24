@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ListItem, List, ListItemText, Button, Modal } from "@material-ui/core";
 import { db } from "./firebase";
-import useStyles from "./useSyles";
+import { useStyles } from "./useStyles";
 import firebase from "firebase";
 
 function Todo(props) {
@@ -33,7 +33,7 @@ function Todo(props) {
       <p
         onClick={(event) => db.collection("todos").doc(props.todo.id).delete()}
       >
-        Deltet Me
+        Delete ME
       </p>
       <button onClick={(e) => setOpen(true)}>Edit Me</button>
       <Modal open={open} onClose={(e) => setOpen(false)}>

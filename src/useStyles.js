@@ -1,4 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
+import styled from "styled-components";
+import { rgba } from "polished";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -11,4 +13,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default useStyles;
+function getModalStyle() {
+  const top = 50;
+  const left = 50;
+  return {
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `translate(-${top}%, -${left}%)`,
+  };
+}
+
+export { useStyles, getModalStyle };

@@ -3,19 +3,9 @@ import ToDo from "./Todo";
 import { db } from "./firebase";
 import { auth } from "firebase";
 import { makeStyles, Button, Modal, Input } from "@material-ui/core";
-import useStyles from "./useSyles";
+import { useStyles, getModalStyle } from "./useStyles";
 import firebase from "firebase";
 import "./App.css";
-
-function getModalStyle() {
-  const top = 50;
-  const left = 50;
-  return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
-  };
-}
 
 function App() {
   const classes = useStyles();
@@ -102,7 +92,9 @@ function App() {
     setInput("");
   };
 
-  // console.log(username);
+  const userTodos = todos.filter((todo) => {
+    return todo.username === user?.displayName;
+  });
 
   return (
     <div className="App">
@@ -158,11 +150,10 @@ function App() {
 
       <div className="app__header">
         <div className="app__logo">
-          <img
-            className="app__headerImage"
-            src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
-            alt="instagram"
-          />
+          <h1>TODO APP</h1>
+        </div>
+        <div className="app__logo">
+          <h1>TODO APP</h1>
         </div>
 
         <div className="app__user__authentication">
@@ -197,9 +188,12 @@ function App() {
             </button>
           </form>
 
+          <p>{user?.displayName} Todos</p>
           <ul>
-            {todos.map((todo) => (
-              <ToDo todo={todo} />
+            {userTodos.map((todo) => (
+              <div>
+                <ToDo todo={todo} />
+              </div>
             ))}
           </ul>
         </div>
