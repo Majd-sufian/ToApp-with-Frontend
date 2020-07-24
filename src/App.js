@@ -154,13 +154,14 @@ function App() {
           <h1>TODO APP</h1>
         </div>
         <div className="app__logo">
-          <h1>TODO APP</h1>
+          <div>Majd Developer</div>
         </div>
 
         <div className="app__user__authentication">
           {user ? (
             <div className="app__loginContainer">
               <Button
+                size="small"
                 variant="contained"
                 color="secondary"
                 onClick={() => auth().signOut()}
@@ -192,7 +193,7 @@ function App() {
       {user ? (
         <div>
           <div>
-            <h1 className="app__user__todo">Your ToDos</h1>
+            <h1 className="app__user__todo">Your ToDos 🔥🚀</h1>
             <ul>
               {userTodos.map((todo) => (
                 <div>

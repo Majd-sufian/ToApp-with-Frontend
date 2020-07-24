@@ -3,6 +3,9 @@ import { ListItem, List, ListItemText, Button, Modal } from "@material-ui/core";
 import { db } from "./firebase";
 import { useStyles } from "./useStyles";
 import firebase from "firebase";
+import HighlightOffTwoToneIcon from "@material-ui/icons/HighlightOffTwoTone";
+import EditIcon from "@material-ui/icons/Edit";
+import "./Todo.css";
 
 function Todo(props) {
   const classes = useStyles();
@@ -26,19 +29,27 @@ function Todo(props) {
     setOpen(false);
   };
   return (
-    <div className="todo__box">
-      <p>{props.todo.todo}</p>
-      <p>{props.todo.username}</p>
-      <p>{props.todo.id}</p>
-      <p
-        onClick={(event) => db.collection("todos").doc(props.todo.id).delete()}
-      >
-        Delete ME
-      </p>
-      <button onClick={(e) => setOpen(true)}>Edit Me</button>
+    <div>
+      <div className="todo__box">
+        <div className="todo__first__row">
+          <HighlightOffTwoToneIcon
+            // fontSize="large"
+            color="secondary"
+            className="todo__remove__icon"
+            onClick={(event) =>
+              db.collection("todos").doc(props.todo.id).delete()
+            }
+          />
+          <div className="todo__todo">{props.todo.todo}</div>
+        </div>
+        <EditIcon
+          // fontSize="large"
+          className="todo__edit__icon"
+          onClick={(e) => setOpen(true)}
+        />
+      </div>
       <Modal open={open} onClose={(e) => setOpen(false)}>
         <div className={classes.paper}>
-          <h1>I am a Modal</h1>
           <input
             placeholder={props.todo.todo}
             value={input}

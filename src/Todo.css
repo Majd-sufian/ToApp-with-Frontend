@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap");
+
+.todo__box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 50px;
+  font-family: "Kalam", cursive;
+  letter-spacing: 5px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.todo__remove__icon {
+  margin-right: 33px;
+  cursor: pointer;
+}
+
+.todo__edit__icon {
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.todo__first__row {
+  display: flex;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .todo__box {
+    margin: 4px;
+    font-size: 14px;
+  }
+
+  .todo__remove__icon {
+    margin-right: 10px;
+  }
+
+  .todo__edit__icon {
+    margin-left: 5px;
+  }
+
+  .MuiSvgIcon-root {
+    height: 1rem;
+    width: 1rem;
+  }
+}
