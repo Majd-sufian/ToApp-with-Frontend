@@ -5,6 +5,7 @@ import { auth } from "firebase";
 import { makeStyles, Button, Modal, Input } from "@material-ui/core";
 import { useStyles, getModalStyle } from "./useStyles";
 import firebase from "firebase";
+import Icon from "@material-ui/core/Icon";
 import "./App.css";
 
 function App() {
@@ -149,7 +150,7 @@ function App() {
       </Modal>
 
       <div className="app__header">
-        <div className="app__logo">
+        <div className="app__logo__2">
           <h1>TODO APP</h1>
         </div>
         <div className="app__logo">
@@ -159,47 +160,69 @@ function App() {
         <div className="app__user__authentication">
           {user ? (
             <div className="app__loginContainer">
-              <Button onClick={() => auth().signOut()}>Logout</Button>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={() => auth().signOut()}
+              >
+                Logout
+              </Button>
             </div>
           ) : (
             <div className="app__loginContainer">
-              <Button onClick={() => setOpenSignIn(true)}>Sign In</Button>
-              <Button onClick={() => setOpen(true)}>Sign Up</Button>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => setOpenSignIn(true)}
+              >
+                Sign In
+              </Button>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={() => setOpen(true)}
+              >
+                Sign Up
+              </Button>
             </div>
           )}
         </div>
       </div>
 
       {user ? (
-        <div className="app__loginContainer">
-          <form>
-            <input
-              value={input}
-              onChange={(event) => setInput(event.target.value)}
-            />
-            <button
-              disabled={!input}
-              variant="outlined"
-              color="secondary"
-              type="submit"
-              onClick={addTodo}
-            >
-              Add ToDo
-            </button>
-          </form>
+        <div>
+          <div>
+            <h1 className="app__user__todo">Your ToDos</h1>
+            <ul>
+              {userTodos.map((todo) => (
+                <div>
+                  <ToDo todo={todo} />
+                </div>
+              ))}
+            </ul>
+          </div>
 
-          <p>{user?.displayName} Todos</p>
-          <ul>
-            {userTodos.map((todo) => (
-              <div>
-                <ToDo todo={todo} />
-              </div>
-            ))}
-          </ul>
+          <div className="app__add__todo">
+            <form className="app__add__todo__form">
+              <input
+                placeholder="Add Todo"
+                value={input}
+                onChange={(event) => setInput(event.target.value)}
+              />
+              <Button
+                onClick={input.length > 0 ? addTodo : ""}
+                variant="contained"
+                color="primary"
+                type="submit"
+              >
+                Add ToDo
+              </Button>
+            </form>
+          </div>
         </div>
       ) : (
-        <div className="app__loginContainer">
-          <p>LogIn to add some Todos</p>
+        <div className="app__loginContainer-2">
+          <h1>LogIn to add some Todos</h1>
         </div>
       )}
     </div>

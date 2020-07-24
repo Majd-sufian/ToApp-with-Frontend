@@ -2,11 +2,50 @@
   background-color: rgb(15, 13, 14);
   color: rgb(219, 217, 218);
   height: 100vh;
+  width: 100%;
   align-items: center;
 }
-
 .app__header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.app__logo__2 {
+  visibility: hidden;
+}
+
+.app__loginContainer {
+  margin: 20px;
+  display: flex;
+  /* justify-content: space-around; */
+}
+
+.app__loginContainer Button,
+.app__user__todo {
+  margin: 10px;
+}
+
+.app__loginContainer-2 {
+  margin: 40px;
+}
+
+.app__user__todo {
+  margin: 30px;
+  margin-top: 0;
+}
+.app__add__todo__form {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.app__add__todo__form input {
+  flex: 1;
+}
+
+.app__add__todo__form button {
+  flex: 0;
 }

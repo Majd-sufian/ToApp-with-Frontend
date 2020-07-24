@@ -26,7 +26,7 @@ function Todo(props) {
     setOpen(false);
   };
   return (
-    <div>
+    <div className="todo__box">
       <p>{props.todo.todo}</p>
       <p>{props.todo.username}</p>
       <p>{props.todo.id}</p>
@@ -47,7 +47,6 @@ function Todo(props) {
           <Button onClick={updateTodo}>Update TODO</Button>
         </div>
       </Modal>
-      <hr></hr>
     </div>
   );
 }
